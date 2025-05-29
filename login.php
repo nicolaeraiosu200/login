@@ -1,5 +1,5 @@
 <?php
-require_once 'https://nicolaeraiosu200.github.io/register';
+require_once 'https://nicolaeraiosu200.github.io/login';
 
 $username = sanitizeInput($_POST['username']);
 $password = sanitizeInput($_POST['password']);
