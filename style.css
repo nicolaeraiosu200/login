@@ -97,4 +97,32 @@ body {
 }
 
 .btn:hover {
-    background: #3
+    background: #3a56d4;
+}
+
+.message {
+    padding: 0.75rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+
+.message.error {
+    background: #ffebee;
+    color: var(--error);
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+}
