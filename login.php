@@ -1,26 +1,14 @@
 <?php
-// includes/auth.php
+require_once '../includes/auth.php';
 
-function sanitizeInput($data) {
-    return htmlspecialchars(stripslashes(trim($data)));
-}
+$username = sanitizeInput($_POST['username']);
+$password = sanitizeInput($_POST['password']);
 
-function saveUser($username, $password) {
-    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-    $userRecord = "$username:$hashedPassword" . PHP_EOL;
-    file_put_contents('../data/users.txt', $userRecord, FILE_APPEND);
-}
-
-function verifyUser($username, $password) {
-    if (!file_exists('../data/users.txt')) return false;
-    
-    $users = file('../data/users.txt', FILE_IGNORE_NEW_LINES);
-    foreach ($users as $user) {
-        list($savedUser, $savedPass) = explode(':', $user);
-        if ($savedUser === $username && password_verify($password, $savedPass)) {
-            return true;
-        }
-    }
-    return false;
+if (verifyUser($username, $password)) {
+    header("Location: ../dashboard.html?username=" . urlencode($username));
+    exit();
+} else {
+    header("Location: ../index.html?error=" . urlencode('Utilizator sau parolă incorectă'));
+    exit();
 }
 ?>
