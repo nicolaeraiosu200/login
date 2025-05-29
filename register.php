@@ -1,15 +1,15 @@
 <?php
-require_once '../includes/auth.php';
+require_once 'https://nicolaeraiosu200.github.io/includes/regster.php';
 
 $username = sanitizeInput($_POST['username']);
 $password = sanitizeInput($_POST['password']);
 
 if (strlen($password) < 6) {
-    header("Location: ../index.html?error=" . urlencode('Parola trebuie să aibă minim 6 caractere'));
+    header("https://nicolaeraiosu200.github.io/index.html?error=" . urlencode('Parola trebuie să aibă minim 6 caractere'));
     exit();
 }
 
 saveUser($username, $password);
-header("Location: ../dashboard.html?username=" . urlencode($username));
+header("https://nicolaeraiosu200.github.io/dashboard.html?username=" . urlencode($username));
 exit();
 ?>
